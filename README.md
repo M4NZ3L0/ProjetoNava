@@ -1,6 +1,6 @@
 # Exemplo API Node
 
-Trabalho da matéria de Programação de Scripts da Fatec Mogi Miri - Arthur de Azevedo.
+Trabalho da matéria de Programação de Scripts da Fatec Mogi Mirim - Arthur de Azevedo.
 
 - Douglas Henrique Dionysio Costa
 - Gabriel Christiano
