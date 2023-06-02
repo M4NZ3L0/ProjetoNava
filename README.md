@@ -5,4 +5,4 @@ Trabalho da matéria de Programação de Scripts da Fatec Mogi Mirim - Arthur de
 - Douglas Henrique Dionysio Costa
 - Gabriel Christiano
 - Guilherme Ferraz Ronha
-- Marcelo
+- Marcelo M.S Gonçalves Ferreira
