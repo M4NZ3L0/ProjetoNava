@@ -1,6 +1,7 @@
 const db = require("./connection.js");
 const { DataTypes } = require('sequelize');
 
+
 const Produtos = db.define('Produto', {
   id: {
     type: DataTypes.INTEGER,
