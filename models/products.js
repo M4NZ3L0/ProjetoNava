@@ -9,15 +9,15 @@ const Produtos = db.define('Produto', {
     autoIncrement: true,
     primaryKey: true
   },
-  Nome: {
+  nome: {
     type: DataTypes.STRING,
     allowNull: false
   },
-  Descricao: {
+  descricao: {
     type: DataTypes.STRING,
     allowNull: false
   },
-  Preco: {
+  preco: {
     type: DataTypes.FLOAT,
     allowNull: false
   }

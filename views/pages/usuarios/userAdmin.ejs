@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link href="./css/userAdmin.css" rel="stylesheet">
+    <title>Administração de Usuários</title>
+</head>
+
+<body>
+
+    <%- include('../../includes/header') %>
+
+        <div class="container">
+            <div class="d-flex bd-highlight mb-3">
+                <div class="me-auto p-2 bd-highlight">
+                    <h2>Users
+                </div>
+                <div class="p-2 bd-highlight">
+                    <a href="/criarUsuario">
+                        <button type="button" class="btn btn-secondary" onclick="showUserCreateBox()">Create</button>
+                    </a>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Senha</th>
+                            <th scope="col">Admin</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="mytable">
+                        <% usuarios.forEach(usuario=> { %>
+                            <tr>
+                                <td scope="col">
+                                    <%= usuario.nome %>
+                                </td>
+                                <td scope="col">
+                                    <%= usuario.email %>
+                                </td>
+                                <td scope="col" class="passwordCol">
+                                    <%= usuario.senha %>
+                                </td>
+                                <td scope="col">
+                                    <%= usuario.isAdmin %>
+                                </td>
+                                <td class="buttons">
+                                    <a href=<%="/atualizarUsuario/" + usuario.id %>>
+                                        <button type="button" class="btn btn-outline-secondary">Edit</button>
+                                    </a>
+                                    <form action="/deletarusuario/<%= usuario.id %>" method="post">
+                                        <button type="submit" class="btn btn-outline-danger">Del</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <% }) %>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+            crossorigin="anonymous"></script>
+
+</body>
+
+</html>

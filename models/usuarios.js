@@ -8,16 +8,21 @@ const Usuarios = db.define('Usuario', {
       autoIncrement: true,
       primaryKey: true
     },
-    Nome: {
+    nome: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    Senha: {
+    senha: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    Email: {
-      type: DataTypes.FLOAT,
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },    
+    isAdmin: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
       allowNull: false
     }
   }, {
