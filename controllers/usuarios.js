@@ -1,12 +1,12 @@
 const Usuarios = require("../models/usuarios.js");
-const bcrypt = require("bcrypt");
 Usuarios.sync();
+const bcrypt = require("bcrypt");
 
-const userAdmin = async (req, res) => {
+const direcionarParaUsuarios = async (req, res) => {
 
     try {
         const usuarios = await Usuarios.findAll();
-        res.render("pages/usuarios/userAdmin", { title: "Gerenciar Usuários", css: "./css/userAdmin.css", usuarios});
+        res.render("pages/usuarios/usuarios", { title: "Gerenciar Usuários", css: "./css/userAdmin.css", usuarios });
     }
     catch (e) {
         res.status(500).send(e);
@@ -14,12 +14,19 @@ const userAdmin = async (req, res) => {
 }
 
 
-const criarUsuario = async (req, res) => {
+const direcionarParaCriarUsuario = async (req, res) => {
 
-    res.render("pages/usuarios/createUser", { title: "Criar Novo Usuario", css: "./css/createUser.css"});
+    res.render("pages/usuarios/criarUsuario", { title: "Criar Novo Usuario", css: "./css/createUser.css" });
 }
 
-const criarUsuarioPost = async (req, res) => {
+
+const direcionarParaAtualizarUsuario = async (req, res) => {
+
+    const { id } = req.params;
+    res.render("pages/usuarios/atualizarUsuario", { title: "Atualizar Usuario", css: "./css/updateUser.css", id });
+}
+
+const criarUsuario = async (req, res) => {
 
     const { name, email, password, isAdmin } = req.body;
 
@@ -46,56 +53,79 @@ const criarUsuarioPost = async (req, res) => {
     }
 }
 
-const atualizarUsuarioPost = async (req, res) => {
+const atualizarUsuario = async (req, res) => {
 
-    const {id} = req.params;
+    const { id } = req.params;
 
     if (!id) {
         res.json("O ID é necessário para verificação");
     }
 
-    const userExists = await Usuarios.findOne({ where: { id } });
+    const usuario = await Usuarios.findByPk(id);
 
-    if (!userExists) {
+    if (!usuario) {
         res.json("Usuario não encontrado!");
     }
 
-    const { name, password, isAdmin } = req.body;
+    const { name, password, email, isAdmin } = req.body;
 
     if (!name) {
-        name = userExists.nome;
+        name = usuario.nome;
+    }
+
+    if (!email) {
+        email = usuario.email;
     }
 
     let passwordHash;
 
     if (!password) {
-        passwordHash = userExists.senha;
+        passwordHash = usuario.senha;
     }
     else {
         passwordHash = await bcrypt.hash(password, 10);
     }
 
     if (!isAdmin) {
-        isAdmin = userExists.isAdmin;
+        isAdmin = usuario.isAdmin;
     }
 
     try {
-        userExists.nome = name;
-        userExists.senha = passwordHash;
-        userExists.isAdmin = isAdmin;
 
-        userExists.save();
-        res.redirect("/userAdmin");
+        usuario.nome = name;
+        usuario.email = email;
+        usuario.senha = passwordHash;
+        usuario.isAdmin = isAdmin;
+
+        await usuario.save();
+        res.redirect("/usuarios");
     }
     catch (e) {
-        res.send(e);
+        res.json(e);
     }
 
 }
 
-const atualizarUsuario = async (req, res) => {
+const deletarUsuario = async (req,res) => {
+    const {id} = req.params;
 
-    res.render("pages/usuarios/updateUser", { title: "Atualizar Usuario", css: "./css/updateUser.css"});
+    const user = await Usuarios.findByPk(id);
+
+    if(!user)
+    {
+        console.log("User don't exist");
+        res.redirect("/usuarios");
+    }
+
+    await user.destroy();
+    res.redirect("/usuarios");
+
 }
-
-module.exports = { userAdmin, criarUsuario, atualizarUsuario, atualizarUsuarioPost, criarUsuarioPost };
+module.exports = {
+    direcionarParaUsuarios,
+    direcionarParaCriarUsuario,
+    direcionarParaAtualizarUsuario,
+    criarUsuario,
+    atualizarUsuario,
+    deletarUsuario
+};

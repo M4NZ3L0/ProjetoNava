@@ -1,6 +1,5 @@
 const jwt = require("jsonwebtoken");
 
-
 //auth middlewares
 
 const checkRegister = (req, res, next) => {
@@ -55,7 +54,7 @@ async function checkToken(req, res, next) {
         if (err) {
             res.redirect("/auth/login");
         }
-        else if (data.isAdmin) {
+        else if (data) {
             console.log("Usuario Autorizado");
             next();
         }
@@ -68,13 +67,17 @@ async function checkTokenIfAdmin(req, res, next) {
 
     jwt.verify(token, process.env.SECRET, (err, data) => {
         if (err) {
+            console.log(err);
             res.redirect("/auth/login");
         }
-        else if (data.isAdmin == true) {
+        else if (data.isAdmin) {
             console.log("ADM Autorizado");
             next();
+        }
+        else {
+            res.redirect("/");
         }
     });
 }
 
-module.exports = { checkLogin, checkRegister, checkToken, checkTokenIfAdmin}
+module.exports = { checkLogin, checkRegister, checkToken, checkTokenIfAdmin }

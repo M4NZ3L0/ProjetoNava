@@ -6,6 +6,14 @@ require('dotenv').config();
 
 // auth functioins
 
+const direcionarParaLogin = (req, res) => {
+  res.render("./pages/auth/login");
+}
+
+const direcionarParaRegister = (req, res) => {
+  res.render("./pages/auth/registrar");
+}
+
 const authRegister = async (req, res) => {
 
   const { name, email, password } = req.body;
@@ -39,7 +47,7 @@ const authRegister = async (req, res) => {
 const authLogin = async (req, res) => {
 
   const { email, password } = req.body;
-  
+
   const usuario = await Usuarios.findOne({ where: { email } });
 
   if (!usuario) {
@@ -52,24 +60,23 @@ const authLogin = async (req, res) => {
     return res.status(422).json({ msg: "Senha inválida" });
   }
 
-  const secret = process.env.SECRET;
-
   const token = jwt.sign(
     {
       isAdmin: usuario.isAdmin,
       nome: usuario.nome
     },
-    secret,
+    process.env.SECRET,
     {
       expiresIn: "24h"
     }
   );
+
   res.cookie("token", token, {
     httpOnly: true,
   })
-  res.status(200).redirect("/logado");
 
+  res.status(200).redirect("/logado");
 
 }
 
-module.exports = { authLogin, authRegister }
+module.exports = { direcionarParaLogin, direcionarParaRegister, authLogin, authRegister }

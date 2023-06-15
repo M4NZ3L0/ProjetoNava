@@ -16,7 +16,7 @@
     <%- include('../../includes/header') %>
         <div class="wrapper">
             <h1>Insira os dados para atualizar o usuário:</h1>
-            <form action="/atualizarUsuario" method="post">
+            <form action=<%="/atualizarUsuario/" + id %> method="post">
                 <div class="form-group">
                     <label for="name">Nome:</label>
                     <input id="name" name="name" type="text" required>
@@ -36,9 +36,9 @@
                     <label for="isAdmin">É admin:</label>
                     <div class="radio-group">
                         <input type="radio" name="isAdmin" value="true" id="isAdminTrue">
-                        <label for="isAdminTrue">Sim</label>
+                        <label for="isAdmin">Sim</label>
                         <input type="radio" name="isAdmin" value="false" id="isAdminFalse">
-                        <label for="isAdminFalse">Não</label>
+                        <label for="isAdmin">Não</label>
                     </div>
                 </div>
 

@@ -19,7 +19,7 @@ const Usuarios = db.define('Usuario', {
     email: {
       type: DataTypes.STRING,
       allowNull: false
-    },    
+    },
     isAdmin: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
@@ -30,4 +30,3 @@ const Usuarios = db.define('Usuario', {
   });
 
   module.exports = Usuarios;
-  
