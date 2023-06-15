@@ -1,13 +1,146 @@
-<h1>Produtos</h1>
-<div class="card">
-    <h2>Produto 1</h2>
-    <p>Descrição do produto 1.</p>
-</div>
-<div class="card">
-    <h2>Produto 2</h2>
-    <p>Descrição do produto 2.</p>
-</div>
-<div class="card">
-    <h2>Produto 3</h2>
-    <p>Descrição do produto 3.</p>
-</div>
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%- include('../../includes/bootstrapcss') %>
+        <link rel="stylesheet" href=<%=css %>>
+        <title>
+            <%= title %>
+        </title>
+</head>
+
+<body>
+
+    <%- include('../../includes/header') %>
+
+        <div class="wrapper">
+
+
+            <!-- intro -->
+            <section class="pt-3">
+                <div class="container">
+                    <div class="row gx-3">
+                        <main class="col-lg-9">
+                            <div class="card-banner p-5 bg-primary rounded-5" style="height: 350px;">
+                                <div style="max-width: 500px;">
+                                    <h2 class="text-white">
+                                        Great products with <br />
+                                        best deals
+                                    </h2>
+                                    <p class="text-white">No matter how far along you are in your sophistication as an
+                                        amateur astronomer, there is always one.</p>
+                                    <a href="#" class="btn btn-light shadow-0 text-primary"> View more </a>
+                                </div>
+                            </div>
+                        </main>
+                        <aside class="col-lg-3">
+                            <div class="card-banner h-100 rounded-5" style="background-color: #f87217;">
+                                <div class="card-body text-center pb-5">
+                                    <h5 class="pt-5 text-white">Amazing Gifts</h5>
+                                    <p class="text-white">No matter how far along you are in your sophistication</p>
+                                    <a href="#" class="btn btn-outline-light"> View more </a>
+                                </div>
+                            </div>
+                        </aside>
+                    </div>
+                    <!-- row //end -->
+                </div>
+                <!-- container end.// -->
+            </section>
+            <!-- intro -->
+
+            <!-- Products -->
+            <section>
+                <div class="container my-5">
+                    <header class="mb-4">
+                        <h3>New products</h3>
+                    </header>
+
+                    <div class="row">
+                        <% produtos.forEach( produto=> { %>
+                            <div class="col-lg-3 col-md-6 col-sm-6">
+                                <a style="color: inherit;text-decoration: none;" href=<%="./produtos/" +produto.id %>>
+                                    <div class="card my-2 shadow-0">
+                                        <img src=<%="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/"
+                                            + Math.floor(Math.random() * (14 - 1) + 1) +".webp" %>
+                                        class="card-img-top rounded-2" style="aspect-ratio: 1 / 1" />
+                                        <div class="card-body p-0 pt-3">
+                                            <h5 class="card-title">
+                                                R$<%= produto.preco %>
+                                            </h5>
+                                            <p class="card-text mb-0">
+                                                <%= produto.nome %>
+                                            </p>
+                                            <p class="text-muted">
+                                                <%= produto.legenda %>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <% }); %>
+                    </div>
+                </div>
+            </section>
+            <!-- Products -->
+
+            <!-- Features -->
+            <section>
+                <div class="container">
+                    <div class="card p-4 bg-primary">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h4 class="mb-0 text-white">Best products and brands in store</h4>
+                                <p class="mb-0 text-white-50">Trendy products and text to build on the card title</p>
+                            </div>
+                            <div class="col-auto"><a class="btn btn-white text-primary shadow-0" href="#">Discover</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Features -->
+
+            <!-- Recommended -->
+            <section>
+                <div class="container my-5">
+                    <header class="mb-4">
+                        <h3>Recomendado pelo preço: </h3>
+                    </header>
+                    <div class="row">
+
+                        <% melhoresProdutos.forEach( produto=> { %>
+                            <div class="col-lg-3 col-md-6 col-sm-6">
+                                <a style="color: inherit;text-decoration: none;" href=<%="./produtos/" + produto.id %>>
+                                    <div class="card my-2 shadow-0">
+                                        <img src=<%="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/"
+                                            + Math.floor(Math.random() * (14 - 1) + 1) +".webp" %>
+                                        class="card-img-top rounded-2" style="aspect-ratio: 1 / 1" />
+                                        <div class="card-body p-0 pt-3">
+                                            <h5 class="card-title">
+                                                R$<%= produto.preco %>
+                                            </h5>
+                                            <p class="card-text mb-0">
+                                                <%= produto.nome %>K
+                                            </p>
+                                            <p class="text-muted">
+                                                Descição: <%= produto.descricao %>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <% }); %>
+                    </div>
+                </div>
+            </section>
+            <!-- Recommended -->
+
+        </div>
+        <%- include('../../includes/footer') %>
+            <%- include('../../includes/bootstrapjs') %>
+</body>
+
+</html>

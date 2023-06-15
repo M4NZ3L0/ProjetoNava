@@ -28,6 +28,6 @@ const Usuarios = db.define('Usuario', {
   }, {
     // Other model options go here
   });
-  
+
   module.exports = Usuarios;
   

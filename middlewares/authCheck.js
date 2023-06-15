@@ -1,3 +1,5 @@
+const jwt = require("jsonwebtoken");
+
 
 //auth middlewares
 
@@ -16,7 +18,7 @@ const checkRegister = (req, res, next) => {
     if (!password) {
         return res.status(422).json({ msg: "A senha é obrigatória!" });
     }
-    
+
     if (password.length < 8) {
         return res.status(422).json({ msg: "A senha precisa conter no minimo 8 carateres!" });
     }
@@ -45,21 +47,34 @@ const checkLogin = (req, res, next) => {
     next();
 }
 
-function checkToken(req, res, next) {
-    const authHeader = req.headers["authorization"];
-    const token = authHeader && authHeader.split(" ")[1];
-  
-    if (!token) return res.status(401).json({ msg: "Acesso negado!" });
-  
-    try {
-      const secret = process.env.SECRET;
-  
-      jwt.verify(token, secret);
-  
-      next();
-    } catch (err) {
-      res.status(400).json({ msg: "O Token é inválido!" });
-    }
-  }
+async function checkToken(req, res, next) {
 
-module.exports = { checkLogin, checkRegister, checkToken}
+    const { token } = req.cookies;
+
+    jwt.verify(token, process.env.SECRET, (err, data) => {
+        if (err) {
+            res.redirect("/auth/login");
+        }
+        else if (data.isAdmin) {
+            console.log("Usuario Autorizado");
+            next();
+        }
+    });
+}
+
+async function checkTokenIfAdmin(req, res, next) {
+
+    const { token } = req.cookies;
+
+    jwt.verify(token, process.env.SECRET, (err, data) => {
+        if (err) {
+            res.redirect("/auth/login");
+        }
+        else if (data.isAdmin == true) {
+            console.log("ADM Autorizado");
+            next();
+        }
+    });
+}
+
+module.exports = { checkLogin, checkRegister, checkToken, checkTokenIfAdmin}

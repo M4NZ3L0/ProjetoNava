@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/base.css">
+    <%- include('../../includes/bootstrapcss') %>
+        <link rel="stylesheet" href=<%=css %>>
+        <title>
+            <%= title %>
+        </title>
+</head>
+
+<body>
+
+    <%- include('../../includes/header') %>
+        <div class="wrapper">
+
+            <div class="container">
+                <h1>Formulário de Produto</h1>
+                <form action="#" method="post">
+                    <div class="form-group">
+                        <label for="nome">Nome:</label>
+                        <input type="text" id="nome" name="nome" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="legenda">Legenda:</label>
+                        <input type="text" id="legenda" name="legenda" class=" form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="descricao">Descrição:</label>
+                        <input type="text" id="descricao" name="descricao" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="preco">Preço:</label>
+                        <input type="number" id="preco" name="preco" class="form-control" required>
+                    </div>
+
+                    <input type="submit" class="btn btn-primary">
+                </form>
+            </div>
+
+        </div>
+        <%- include('../../includes/footer') %>
+            <%- include('../../includes/bootstrapjs') %>
+</body>
+
+</html>

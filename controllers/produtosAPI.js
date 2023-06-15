@@ -4,9 +4,10 @@ Produtos.sync();
 const criarProduto = async (req,res) => {
     console.log(req.body)
     await Produtos.create({
-        "Nome": req.body.Nome,
-        "Descricao": req.body.Descricao,
-        "Preco": req.body.Preco
+        "nome": req.body.nome,
+        "descricao": req.body.descricao,
+        "preco": req.body.preco,
+        "autor_id": req.body.autor_id
     });
     res.json({"mensagem": "Produto criado"});
 
@@ -42,9 +43,9 @@ const updateProduto = async (req,res) => {
     else
     {
         await getProduto.set({
-            "Nome": req.body.Nome,
-            "Descricao": req.body.Descricao,
-            "Preco": req.body.Preco
+            "nome": req.body.nome,
+            "descricao": req.body.descricao,
+            "preco": req.body.preco
         })
 
         await getProduto.save();

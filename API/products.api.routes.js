@@ -9,7 +9,7 @@ router.get("/produtos", produtosAPI.getTodosProdutos);
 
 router.get("/produtos/:id", produtosAPI.getProduto);
 
-router.put("/produtos/:id", produtosAPI.updateProduto);
+router.patch("/produtos/:id", produtosAPI.updateProduto);
 
 router.delete("/produtos/:id", produtosAPI.deleteProduto);
 

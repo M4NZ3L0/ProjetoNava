@@ -1,6 +1,6 @@
 const db = require("./connection.js");
 const { DataTypes } = require('sequelize');
-
+const Usuarios = require("./usuarios.js");
 
 const Produtos = db.define('Produto', {
   id: {
@@ -10,6 +10,10 @@ const Produtos = db.define('Produto', {
     primaryKey: true
   },
   nome: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  legenda: {
     type: DataTypes.STRING,
     allowNull: false
   },
@@ -24,5 +28,10 @@ const Produtos = db.define('Produto', {
 }, {
   // Other model options go here
 });
+
+Produtos.belongsTo( Usuarios, {
+  constraints: false,
+  foreignKey: "autorId"
+})
 
 module.exports = Produtos;

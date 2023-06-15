@@ -6,7 +6,7 @@ const userAdmin = async (req, res) => {
 
     try {
         const usuarios = await Usuarios.findAll();
-        res.render("./pages/usuarios/userAdmin", { usuarios });
+        res.render("pages/usuarios/userAdmin", { title: "Gerenciar Usuários", css: "./css/userAdmin.css", usuarios});
     }
     catch (e) {
         res.status(500).send(e);
@@ -16,7 +16,7 @@ const userAdmin = async (req, res) => {
 
 const criarUsuario = async (req, res) => {
 
-    res.render("./pages/usuarios/createUser");
+    res.render("pages/usuarios/createUser", { title: "Criar Novo Usuario", css: "./css/createUser.css"});
 }
 
 const criarUsuarioPost = async (req, res) => {
@@ -95,7 +95,7 @@ const atualizarUsuarioPost = async (req, res) => {
 
 const atualizarUsuario = async (req, res) => {
 
-    res.render("./pages/usuarios/updateUser");
+    res.render("pages/usuarios/updateUser", { title: "Atualizar Usuario", css: "./css/updateUser.css"});
 }
 
 module.exports = { userAdmin, criarUsuario, atualizarUsuario, atualizarUsuarioPost, criarUsuarioPost };
