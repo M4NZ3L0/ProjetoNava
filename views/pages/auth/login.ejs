@@ -1,16 +1,54 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Login</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%- include('../../includes/bootstrapcss') %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href=<%=css %>>
+    <title>
+      <%= title %>
+    </title>
 </head>
+
 <body>
-    <h1>Login</h1>
-    <form action="/auth/login" method="POST">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
-        <label for="password">Senha:</label>
-        <input type="password" id="password" name="password" required><br><br>
-        <input type="submit" value="Entrar">
-    </form>
+
+  <%- include('../../includes/header') %>
+
+    <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+      <div class="row align-items-center g-lg-5 py-5">
+        <div class="col-lg-7 text-center text-lg-start">
+          <h1 class="display-4 fw-bold lh-1 text-body-emphasis mb-3">Efetue o login para melhor experiência</h1>
+          <p class="col-lg-10 fs-4">Para ter uma eperiência mais comlpeta da aplicação, é recomendado efetuar o login Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere rem fugiat excepturi dicta nemo laboriosam?</p>
+        </div>
+        <div class="col-md-10 mx-auto col-lg-5">
+          <form method="post" action="#" class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control" id="email" name="email" placeholder="email">
+              <label for="email">Email</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+              <label for="password">Senha</label>
+            </div>
+            <div class="checkbox mb-3">
+              <label>
+                <input type="checkbox" value="remember-me"> Remember me
+              </label>
+            </div>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
+            <hr class="my-4">
+            <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use.</small>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <%- include('../../includes/footer') %>
+      <%- include('../../includes/bootstrapjs') %>
 </body>
+
 </html>

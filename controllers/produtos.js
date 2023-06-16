@@ -1,9 +1,12 @@
+const jwt = require("jsonwebtoken");
 const Produtos = require("../models/produtos.js");
 const Usuarios = require("../models/usuarios.js");
 Produtos.sync();
 Usuarios.sync();
 
 const direcionarParaProdutos = async (req, res) => {
+  const { token } = req.cookies;
+  const decode = jwt.decode(token);
 
     const produtos = await Produtos.findAll();
 
@@ -19,10 +22,12 @@ const direcionarParaProdutos = async (req, res) => {
 
     const melhoresProdutos = produtos.slice(0, 4);
 
-    res.render("pages/produtos/produtos", { title: "Produtos", css: "./css/produtos.css", produtos, melhoresProdutos });
+    res.render("pages/produtos/produtos", { title: "Produtos", css: "./css/produtos.css", produtos, melhoresProdutos,usuario:decode.nome  });
 }
 
 const direcionarParaUmProduto = async (req, res) => {
+  const { token } = req.cookies;
+  const decode = jwt.decode(token);
 
     const { id } = req.params;
 
@@ -32,11 +37,13 @@ const direcionarParaUmProduto = async (req, res) => {
         res.redirect("/produtos");
     }
 
-    res.render("./pages/produtos/produto", { title: "Produtos", css: "./css/produtos.css", produto })
+    res.render("./pages/produtos/produto", { title: "Produtos", css: "./css/produtos.css", produto,usuario:decode.nome  })
 }
 
 const direcionarParaAtualizarProduto = (req, res) => {
-    res.render("./pages/produtos/atualizarProduto", { title: "Produtos", css: "./css/produtos.css" });
+  const { token } = req.cookies;
+  const decode = jwt.decode(token);
+    res.render("./pages/produtos/atualizarProduto", { title: "Produtos", css: "./css/produtos.css",usuario:decode.nome  });
 }
 
 const atualizarProduto = async (req, res) => {

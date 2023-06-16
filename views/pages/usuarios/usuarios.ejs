@@ -2,76 +2,72 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <%- include('../../includes/bootstrapcss') %>
-        <link rel="stylesheet" href=<%=css %>>
-        <title>
-            <%= title %>
-        </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%- include('../../includes/bootstrapcss') %>
+    <link rel="stylesheet" href=<%=css %>>
+    <title>
+      <%= title %>
+    </title>
 </head>
 
 <body>
 
-    <%- include('../../includes/header') %>
-        <div class="wrapper">
-            <div class="container">
-                <div class="d-flex bd-highlight mb-3">
-                    <div class="me-auto p-2 bd-highlight">
-                        <h2>Users
-                    </div>
-                    <div class="p-2 bd-highlight">
-                        <a href="/criarUsuario">
-                            <button type="button" class="btn btn-secondary"
-                                onclick="showUserCreateBox()">Create</button>
-                        </a>
-                    </div>
-                </div>
+  <%- include('../../includes/logoutHeader',{usuario}) %>
 
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Nome</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Senha</th>
-                                <th scope="col">Admin</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="mytable">
-                            <% usuarios.forEach(usuario=> { %>
-                                <tr>
-                                    <td scope="col">
-                                        <%= usuario.nome %>
-                                    </td>
-                                    <td scope="col">
-                                        <%= usuario.email %>
-                                    </td>
-                                    <td scope="col" class="passwordCol">
-                                        <%= usuario.senha %>
-                                    </td>
-                                    <td scope="col">
-                                        <%= usuario.isAdmin %>
-                                    </td>
-                                    <td class="buttons">
-                                        <a href=<%="/atualizarUsuario/" + usuario.id %>>
-                                            <button type="button" class="btn btn-outline-secondary">Edit</button>
-                                        </a>
-                                        <form action="/deletarusuario/<%= usuario.id %>" method="post">
-                                            <button type="submit" class="btn btn-outline-danger">Del</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <% }) %>
+    <div class="container">
+      <div class="d-flex py-4 justify-content-between align-items-center">
+        <h1 class="display-4 fw-bold mb-3">Painel de Usuários</h1>
+        <a  href="/criarUsuario">
+          <button type="button" class="btn btn-success p-2">Criar Novo
+            Usuario</button>
+        </a>
+      </div>
 
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <%- include('../../includes/footer') %>
-            <%- include('../../includes/bootstrapjs') %>
+      <div class="table-responsive">
+        <table class="table mb-5">
+          <thead class="bg-dark text-light">
+            <tr>
+              <th scope="col">Nome</th>
+              <th scope="col">Email</th>
+              <th scope="col">Senha</th>
+              <th scope="col">Admin</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody id="mytable">
+            <% usuarios.forEach(usuario=> { %>
+              <tr>
+                <td scope="col">
+                  <%= usuario.nome %>
+                </td>
+                <td scope="col">
+                  <%= usuario.email %>
+                </td>
+                <td scope="col" class="passwordCol">
+                  <%= usuario.senha %>
+                </td>
+                <td scope="col">
+                  <%= usuario.isAdmin %>
+                </td>
+                <td class="d-flex">
+                  <a class="col" href=<%="/atualizarUsuario/" + usuario.id %>>
+                    <button type="button" class="btn btn-outline-secondary">Edit</button>
+                  </a>
+                  <form class="col" action="/deletarusuario/<%= usuario.id %>" method="post">
+                    <button type="submit" class="btn btn-outline-danger">Del</button>
+                  </form>
+                </td>
+              </tr>
+              <% }) %>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <%- include('../../includes/footer') %>
+      <%- include('../../includes/bootstrapjs') %>
 </body>
 
 </html>

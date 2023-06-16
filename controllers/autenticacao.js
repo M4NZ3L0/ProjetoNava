@@ -7,11 +7,11 @@ require('dotenv').config();
 // auth functioins
 
 const direcionarParaLogin = (req, res) => {
-  res.render("./pages/auth/login");
+  res.render("./pages/auth/login",{title:"Login", css:"/css/login.css"});
 }
 
 const direcionarParaRegister = (req, res) => {
-  res.render("./pages/auth/registrar");
+  res.render("./pages/auth/registrar",{title:"Registrar", css:"/css/registar.css"});
 }
 
 const authRegister = async (req, res) => {

@@ -1,11 +1,24 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Registro</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <%- include('../../includes/bootstrapcss') %>
+    <link rel="stylesheet" href=<%=css %>>
+    <title>
+      <%= title %>
+    </title>
 </head>
+
 <body>
-    <h1>Registro</h1>
-    <form action="/auth/registrar" method="POST">    
+
+  <%- include('../../includes/header') %>
+
+    <!-- <form action="/auth/registrar" method="POST">
         <label for="name">Nome:</label>
         <input type="text" id="name" name="name" required><br><br>
         <label for="email">Email:</label>
@@ -15,6 +28,61 @@
         <label for="confirm_password">Confirmar Senha:</label>
         <input type="password" id="confirm_password" name="confirm_password" required><br><br>
         <input type="submit" value="Registrar">
-    </form>
+    </form> -->
+
+    <section class="container-fluid align-items-center justify-content-center">
+      <div class="d-flex align-items-center justify-content-center vh-100">
+        <div class="col-3 rounded border">
+          <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Registre-se</p>
+          <form method="post" class="mx-1 mx-md-4">
+
+            <div class="d-flex flex-row align-items-center mb-4">
+              <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+              <div class="form-outline flex-fill mb-0">
+                <input type="text" id="name" name="name" class="form-control" placeholder="Nome" />
+              </div>
+            </div>
+
+            <div class="d-flex flex-row align-items-center mb-4">
+              <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+              <div class="form-outline flex-fill mb-0">
+                <input type="email" id="email" name="email" class="form-control" placeholder="Email" />
+              </div>
+            </div>
+
+            <div class="d-flex flex-row align-items-center mb-4">
+              <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+              <div class="form-outline flex-fill mb-0">
+                <input type="password" id="password" name="password" class="form-control" placeholder="Senha" />
+              </div>
+            </div>
+
+            <div class="d-flex flex-row align-items-center mb-4">
+              <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+              <div class="form-outline flex-fill mb-0">
+                <input type="password" id="confirm_password" name="confirm_password" class="form-control"
+                  placeholder="Repetir Senha" />
+              </div>
+            </div>
+
+            <div class="form-check d-flex justify-content-center mb-5">
+              <input class="form-check-input me-2" type="checkbox" required id="form2Example3c" />
+              <label class="form-check-label" for="form2Example3">
+                I agree all statements in <a href="#!">Terms of service</a>
+              </label>
+            </div>
+
+            <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+              <button type="submit" class="btn btn-primary btn-lg">Register</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <%- include('../../includes/footer') %>
+
 </body>
+
 </html>

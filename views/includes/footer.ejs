@@ -1,121 +1,127 @@
-<!-- Footer -->
-<footer class="text-center text-lg-start text-white" style="background-color: #45526e">
-    <!-- Grid container -->
-    <div class="container p-4 pb-0">
-        <!-- Section: Links -->
-        <section class="">
-            <!--Grid row-->
-            <div class="row">
-                <!-- Grid column -->
-                <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-                    <h6 class="text-uppercase mb-4 font-weight-bold">
-                        Company name
-                    </h6>
-                    <p>
-                        Here you can use rows and columns to organize your footer
-                        content. Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit.
-                    </p>
-                </div>
-                <!-- Grid column -->
+<style>
+  .footer-dark {
+    padding: 50px 0;
+    color: #f0f9ff;
+    background-color: #282d32;
+  }
 
-                <hr class="w-100 clearfix d-md-none" />
+  .footer-dark h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-weight: bold;
+    font-size: 16px;
+  }
 
-                <!-- Grid column -->
-                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-                    <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
-                    <p>
-                        <a class="text-white">MDBootstrap</a>
-                    </p>
-                    <p>
-                        <a class="text-white">MDWordPress</a>
-                    </p>
-                    <p>
-                        <a class="text-white">BrandFlow</a>
-                    </p>
-                    <p>
-                        <a class="text-white">Bootstrap Angular</a>
-                    </p>
-                </div>
-                <!-- Grid column -->
+  .footer-dark ul {
+    padding: 0;
+    list-style: none;
+    line-height: 1.6;
+    font-size: 14px;
+    margin-bottom: 0;
+  }
 
-                <hr class="w-100 clearfix d-md-none" />
+  .footer-dark ul a {
+    color: inherit;
+    text-decoration: none;
+    opacity: 0.6;
+  }
 
-                <!-- Grid column -->
-                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-                    <h6 class="text-uppercase mb-4 font-weight-bold">
-                        Useful links
-                    </h6>
-                    <p>
-                        <a class="text-white">Your Account</a>
-                    </p>
-                    <p>
-                        <a class="text-white">Become an Affiliate</a>
-                    </p>
-                    <p>
-                        <a class="text-white">Shipping Rates</a>
-                    </p>
-                    <p>
-                        <a class="text-white">Help</a>
-                    </p>
-                </div>
+  .footer-dark ul a:hover {
+    opacity: 0.8;
+  }
 
-                <!-- Grid column -->
-                <hr class="w-100 clearfix d-md-none" />
+  @media (max-width:767px) {
+    .footer-dark .item:not(.social) {
+      text-align: center;
+      padding-bottom: 20px;
+    }
+  }
 
-                <!-- Grid column -->
-                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-                    <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
-                    <p><i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
-                    <p><i class="fas fa-envelope mr-3"></i> info@gmail.com</p>
-                    <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
-                    <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
-                </div>
-                <!-- Grid column -->
-            </div>
-            <!--Grid row-->
-        </section>
-        <!-- Section: Links -->
+  .footer-dark .item.text {
+    margin-bottom: 36px;
+  }
 
-        <hr class="my-3">
+  @media (max-width:767px) {
+    .footer-dark .item.text {
+      margin-bottom: 0;
+    }
+  }
 
-        <!-- Section: Copyright -->
-        <section class="p-3 pt-0">
-            <div class="row d-flex align-items-center">
-                <!-- Grid column -->
-                <div class="col-md-7 col-lg-8 text-center text-md-start">
-                    <!-- Copyright -->
-                    <div class="p-3">
-                        © 2020 Copyright:
-                        <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
-                    </div>
-                    <!-- Copyright -->
-                </div>
-                <!-- Grid column -->
+  .footer-dark .item.text p {
+    opacity: 0.6;
+    margin-bottom: 0;
+  }
 
-                <!-- Grid column -->
-                <div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
-                    <!-- Facebook -->
-                    <a class="btn btn-outline-light btn-floating m-1" class="text-white" role="button"><i
-                            class="fab fa-facebook-f"></i></a>
+  .footer-dark .item.social {
+    text-align: center;
+  }
 
-                    <!-- Twitter -->
-                    <a class="btn btn-outline-light btn-floating m-1" class="text-white" role="button"><i
-                            class="fab fa-twitter"></i></a>
+  @media (max-width:991px) {
+    .footer-dark .item.social {
+      text-align: center;
+      margin-top: 20px;
+    }
+  }
 
-                    <!-- Google -->
-                    <a class="btn btn-outline-light btn-floating m-1" class="text-white" role="button"><i
-                            class="fab fa-google"></i></a>
+  .footer-dark .item.social>a {
+    font-size: 20px;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.4);
+    margin: 0 8px;
+    color: #fff;
+    opacity: 0.75;
+  }
 
-                    <!-- Instagram -->
-                    <a class="btn btn-outline-light btn-floating m-1" class="text-white" role="button"><i
-                            class="fab fa-instagram"></i></a>
-                </div>
-                <!-- Grid column -->
-            </div>
-        </section>
-        <!-- Section: Copyright -->
+  .footer-dark .item.social>a:hover {
+    opacity: 0.9;
+  }
+
+  .footer-dark .copyright {
+    text-align: center;
+    padding-top: 24px;
+    opacity: 0.3;
+    font-size: 13px;
+    margin-bottom: 0;
+  }
+</style>
+<div class="footer-dark">
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-md-3 item">
+          <h3>Services</h3>
+          <ul>
+            <li><a href="#">Web design</a></li>
+            <li><a href="#">Development</a></li>
+            <li><a href="#">Hosting</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-6 col-md-3 item">
+          <h3>About</h3>
+          <ul>
+            <li><a href="#">Company</a></li>
+            <li><a href="#">Team</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div>
+        <div class="col-md-6 item text">
+          <h3>Company Name</h3>
+          <p>Praesent sed lobortis mi. Suspendisse vel placerat ligula. Vivamus ac sem lacus. Ut vehicula rhoncus
+            elementum. Etiam quis tristique lectus. Aliquam in arcu eget velit pulvinar dictum vel in justo.</p>
+        </div>
+        <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i
+              class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a
+            href="#"><i class="icon ion-social-instagram"></i></a></div>
+      </div>
+      <p class="copyright">Company Name © 2018</p>
     </div>
-    <!-- Grid container -->
-</footer>
-<!-- Footer -->
+  </footer>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
